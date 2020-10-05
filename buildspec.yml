@@ -23,6 +23,9 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/petclinic:$JAR_VERSION
+cache:
+  paths:
+    - '/root/.m2/**/*'
 reports:
   unit-tests-report: # For Unit Test Reports
     files:
@@ -34,6 +37,3 @@ reports:
       - jacoco.xml
     file-format: 'JaCoCoXml'
     base-directory: 'target/site/jacoco'
-cache:
-  paths:
-    - '/root/.m2/**/*'
